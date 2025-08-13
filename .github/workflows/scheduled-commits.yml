@@ -1,0 +1,43 @@
+name: Scheduled Commits
+
+on:
+  schedule:
+    # Test run today at 02:15 UTC
+    - cron: '15 2 13 8 *'
+
+    # Runs at 12:00 UTC each day from Aug 14 to Aug 28, 2025
+    - cron: '0 12 14 8 *'
+    - cron: '0 12 15 8 *'
+    - cron: '0 12 16 8 *'
+    - cron: '0 12 17 8 *'
+    - cron: '0 12 18 8 *'
+    - cron: '0 12 19 8 *'
+    - cron: '0 12 20 8 *'
+    - cron: '0 12 21 8 *'
+    - cron: '0 12 22 8 *'
+    - cron: '0 12 23 8 *'
+    - cron: '0 12 24 8 *'
+    - cron: '0 12 25 8 *'
+    - cron: '0 12 26 8 *'
+    - cron: '0 12 27 8 *'
+    - cron: '0 12 28 8 *'
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Example: append to a daily file
+      - run: |
+          echo "Update for $(date)" >> updates.txt
+
+      # Git configuration
+      - run: git config user.name "OTH-DOT"
+      - run: git config user.email "othmanemakkour8@gmail.com"
+
+      # Commit and push
+      - run: |
+          git add .
+          git commit -m "Daily commit for $(date)"
+          git push

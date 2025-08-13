@@ -3,7 +3,7 @@ name: Scheduled Commits
 on:
   schedule:
     # Test run today at 02:15 UTC
-    - cron: '15 2 13 8 *'
+    - cron: '0 5 13 8 *'
 
     # Runs at 12:00 UTC each day from Aug 14 to Aug 28, 2025
     - cron: '0 12 14 8 *'
